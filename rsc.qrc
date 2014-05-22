@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/gong1.png</file>
+        <file>icon/gong2.png</file>
+        <file>icon/open.png</file>
+        <file>icon/Stop-Normal-Red-icon.png</file>
+        <file>icon/video-play-512.png</file>
+        <file>icon/exit.png</file>
+    </qresource>
+</RCC>
