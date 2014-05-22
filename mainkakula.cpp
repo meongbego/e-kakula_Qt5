@@ -333,6 +333,8 @@ MainKakula::MainKakula(QWidget *parent) :
 
     connect(horizontalSlider, SIGNAL(sliderMoved(int)), this, SLOT(soundVolume(int)));
 
+    connect(toolButton, SIGNAL(clicked()), this, SLOT(pdfReader()));
+
     //shortcut keyboard
 }
 
@@ -402,6 +404,16 @@ void MainKakula::soundVolume(int volume)
     this->suara=volume;
 }
 
+void MainKakula::pdfReader()
+{
+    QString img = QFileDialog::getOpenFileName(this, tr("Open File"), "/home", "*.png *.jpeg *.jpg");
+    this->lineEdit->setText(img);
+    QPixmap pdf(img);
+    QGraphicsScene *scene = new QGraphicsScene(this->graphicsView);
+    this->graphicsView->setScene(scene);
+    scene->addPixmap(pdf);
+}
+
 void MainKakula::keyPressEvent(QKeyEvent *e)
 {
     /*
@@ -411,28 +423,39 @@ void MainKakula::keyPressEvent(QKeyEvent *e)
     else if()
     */
     switch (e->key()) {
-    case Qt::Key_A :
+    case Qt::Key_L :
         ketukGong1();
         break;
-    case Qt::Key_S:
+    case Qt::Key_K:
         ketukGong2();
         break;
-    case Qt::Key_D:
+    case Qt::Key_M:
         ketukGong3();
         break;
-    case Qt::Key_F:
+    case Qt::Key_C:
         ketukGong4();
         break;
-    case Qt::Key_G:
+    case Qt::Key_D:
         ketukGong5();
         break;
-    case Qt::Key_H:
+    case Qt::Key_S:
         ketukGong6();
         break;
-    case Qt::Key_J:
+    case Qt::Key_A:
         ketukGong7();
+        break;
+    case Qt::Key_Space:
+        gongSpace();
         break;
     default:
         break;
     }
+}
+
+void MainKakula::gongSpace()
+{
+    QMediaPlayer *SGong2 = new QMediaPlayer;
+    SGong2->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/gong.ogg"));
+    SGong2->setVolume(this->suara);
+    SGong2->play();
 }

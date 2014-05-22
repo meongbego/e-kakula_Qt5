@@ -26,6 +26,8 @@
 #include <QAudioDeviceInfo>
 #include <QMediaPlayer>
 #include <QKeyEvent>
+#include <QFileDialog>
+#include <QGraphicsScene>
 
 class MainKakula : public QMainWindow
 {
@@ -45,6 +47,7 @@ public slots:
     void ketukGong7();
     void soundVolume(int volume);
 
+    void pdfReader();
     
 private:
         QWidget *centralWidget;
@@ -91,21 +94,14 @@ private:
         QPushButton *Gong7;
         QHBoxLayout *LTombolT;
 
-        /*
-        QPushButton *GTinggi;
-        QPushButton *GTinggi2;
-        QPushButton *GTinggi3;
-        QPushButton *GTinggi4;
-        QPushButton *GTinggi5;
-        QPushButton *GTinggi6;
-        QPushButton *GTinggi7;
-        */
+
         QMediaPlayer *SGong;
-        QMediaPlayer *SGongT;
 
         int suara;
 
         void keyPressEvent(QKeyEvent *e);
+
+        void gongSpace();
 };
 
 #endif // MAINKAKULA_H
