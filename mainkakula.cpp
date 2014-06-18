@@ -1,461 +1,346 @@
 #include "mainkakula.h"
+#include "ui_mainkakula.h"
+#include <QGraphicsPixmapItem>
 
 MainKakula::MainKakula(QWidget *parent) :
-    QMainWindow(parent)
+    QMainWindow(parent),
+    ui(new Ui::MainKakula)
 {
-    centralWidget = new QWidget(this);
-
-    verticalLayout_4 = new QVBoxLayout(centralWidget);
-    verticalLayout_4->setSpacing(6);
-    verticalLayout_4->setContentsMargins(11, 11, 11, 11);
-    horizontalLayout_3 = new QHBoxLayout();
-    horizontalLayout_3->setSpacing(6);
-
-    TOptionPintas = new QTabWidget(centralWidget);
-
-    TEqual = new QWidget();
-    horizontalLayout_6 = new QHBoxLayout(TEqual);
-    horizontalLayout_6->setSpacing(1);
-    horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
-    horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-
-    sa3 = new QSlider(TEqual);
-    sa3->setMaximum(100);
-    sa3->setValue(50);
-    sa3->setSliderPosition(50);
-    sa3->setOrientation(Qt::Vertical);
-    sa3->setInvertedAppearance(false);
-    sa3->setInvertedControls(false);
-    sa3->setTickPosition(QSlider::TicksBothSides);
-
-    horizontalLayout_6->addWidget(sa3);
-
-    sa2 = new QSlider(TEqual);
-    sa2->setMaximum(100);
-    sa2->setValue(50);
-    sa2->setOrientation(Qt::Vertical);
-    sa2->setTickPosition(QSlider::TicksBothSides);
-
-    horizontalLayout_6->addWidget(sa2);
-
-    sa1 = new QSlider(TEqual);
-    sa1->setMaximum(100);
-    sa1->setValue(50);
-    sa1->setOrientation(Qt::Vertical);
-    sa1->setTickPosition(QSlider::TicksBothSides);
-    sa1->setTickInterval(0);
-
-    horizontalLayout_6->addWidget(sa1);
-
-    sa4 = new QSlider(TEqual);
-    sa4->setMaximum(100);
-    sa4->setValue(50);
-    sa4->setOrientation(Qt::Vertical);
-    sa4->setTickPosition(QSlider::TicksBothSides);
-
-    horizontalLayout_6->addWidget(sa4);
-
-    sa5 = new QSlider(TEqual);
-    sa5->setMaximum(100);
-    sa5->setValue(50);
-    sa5->setOrientation(Qt::Vertical);
-    sa5->setTickPosition(QSlider::TicksBothSides);
-
-    horizontalLayout_6->addWidget(sa5);
-
-    sa6 = new QSlider(TEqual);
-    sa6->setMaximum(100);
-    sa6->setValue(50);
-    sa6->setOrientation(Qt::Vertical);
-    sa6->setTickPosition(QSlider::TicksBothSides);
-
-    horizontalLayout_6->addWidget(sa6);
-
-    sa7 = new QSlider(TEqual);
-    sa7->setMaximum(100);
-    sa7->setValue(50);
-    sa7->setOrientation(Qt::Vertical);
-    sa7->setTickPosition(QSlider::TicksBothSides);
-
-    horizontalLayout_6->addWidget(sa7);
-
-    TOptionPintas->addTab(TEqual, QString());
-    TEffect = new QWidget();
-    horizontalLayout_2 = new QHBoxLayout(TEffect);
-    horizontalLayout_2->setSpacing(6);
-    horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-    formEffect = new QFormLayout();
-    formEffect->setSpacing(6);
-    formEffect->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
-    formEffect->setHorizontalSpacing(4);
-    formEffect->setVerticalSpacing(8);
-    label = new QLabel(TEffect);
-
-    formEffect->setWidget(0, QFormLayout::LabelRole, label);
-
-    horizontalSlider = new QSlider(TEffect);
-    horizontalSlider->setOrientation(Qt::Horizontal);
-    horizontalSlider->setTickPosition(QSlider::TicksBelow);
-    horizontalSlider->setValue(50);
-
-    formEffect->setWidget(0, QFormLayout::FieldRole, horizontalSlider);
-
-    label_2 = new QLabel(TEffect);
-
-    formEffect->setWidget(1, QFormLayout::LabelRole, label_2);
-
-    horizontalSlider_2 = new QSlider(TEffect);
-    horizontalSlider_2->setOrientation(Qt::Horizontal);
-    horizontalSlider_2->setTickPosition(QSlider::TicksBelow);
-    horizontalSlider_2->setValue(50);
-
-    formEffect->setWidget(1, QFormLayout::FieldRole, horizontalSlider_2);
-
-
-    horizontalLayout_2->addLayout(formEffect);
-
-    TOptionPintas->addTab(TEffect, QString());
-
-    horizontalLayout_3->addWidget(TOptionPintas);
-
-    verticalLayout_3 = new QVBoxLayout();
-    verticalLayout_3->setSpacing(6);
-    graphicsView = new QGraphicsView(centralWidget);
-
-    verticalLayout_3->addWidget(graphicsView);
-
-    horizontalLayout_4 = new QHBoxLayout();
-    horizontalLayout_4->setSpacing(6);
-    lineEdit = new QLineEdit(centralWidget);
-
-    horizontalLayout_4->addWidget(lineEdit);
-
-    toolButton = new QToolButton(centralWidget);
-    QIcon icon;
-    icon.addFile(QStringLiteral(":/icon/icon/open.png"), QSize(), QIcon::Normal, QIcon::Off);
-    toolButton->setIcon(icon);
-    toolButton->setCheckable(false);
-    toolButton->setToolButtonStyle(Qt::ToolButtonFollowStyle);
-
-    horizontalLayout_4->addWidget(toolButton);
-
-
-    verticalLayout_3->addLayout(horizontalLayout_4);
-
-
-    horizontalLayout_3->addLayout(verticalLayout_3);
-
-    verticalLayout_2 = new QVBoxLayout();
-    verticalLayout_2->setSpacing(6);
-    btnRekam = new QPushButton(centralWidget);
-    verticalLayout_2->addWidget(btnRekam);
-
-    horizontalLayout = new QHBoxLayout();
-    horizontalLayout->setSpacing(6);
-    comboExample = new QComboBox(centralWidget);
-
-    horizontalLayout->addWidget(comboExample);
-
-    toolButton_2 = new QToolButton(centralWidget);
-
-    horizontalLayout->addWidget(toolButton_2);
-
-    verticalLayout_2->addLayout(horizontalLayout);
-
-    exampleTime = new QTimeEdit(centralWidget);
-    exampleTime->setWrapping(false);
-    exampleTime->setFrame(false);
-    exampleTime->setAlignment(Qt::AlignCenter);
-    exampleTime->setReadOnly(true);
-    exampleTime->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    exampleTime->setKeyboardTracking(true);
-
-    verticalLayout_2->addWidget(exampleTime);
-
-    btnPlay = new QPushButton(centralWidget);
-    QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
-   // sizePolicy.setHorizontalStretch(100);
-    //sizePolicy.setVerticalStretch(100);
-    //sizePolicy.setHeightForWidth(btnPlay->sizePolicy().hasHeightForWidth());
-   // btnPlay->setSizePolicy(sizePolicy);
-    QIcon icon1;
-    icon1.addFile(QStringLiteral(":/icon/icon/video-play-512.png"), QSize(), QIcon::Normal, QIcon::Off);
-    btnPlay->setIcon(icon1);
-    btnPlay->setIconSize(QSize(80, 80));
-
-    verticalLayout_2->addWidget(btnPlay);
-
-    pushButton_2 = new QPushButton(centralWidget);
-    QIcon icon2;
-    icon2.addFile(QStringLiteral(":/icon/icon/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-    pushButton_2->setIcon(icon2);
-
-    verticalLayout_2->addWidget(pushButton_2);
-
-    pushButton = new QPushButton(centralWidget);
-
-    verticalLayout_2->addWidget(pushButton);
-
-
-    horizontalLayout_3->addLayout(verticalLayout_2);
-
-
-    verticalLayout_4->addLayout(horizontalLayout_3);
-
-    horizontalLayout_5 = new QHBoxLayout();
-    horizontalLayout_5->setSpacing(6);
-    horizontalLayout_5->setContentsMargins(-1, 0, -1, 0);
-    Gong1 = new QPushButton(centralWidget);
-    QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Expanding);
-    sizePolicy1.setHorizontalStretch(0);
-    sizePolicy1.setVerticalStretch(0);
-    sizePolicy1.setHeightForWidth(Gong1->sizePolicy().hasHeightForWidth());
-    Gong1->setSizePolicy(sizePolicy1);
-    Gong1->setSizeIncrement(QSize(0, 0));
-    QIcon icon3;
-    icon3.addFile(QStringLiteral(":/icon/icon/gong1.png"), QSize(), QIcon::Normal, QIcon::Off);
-    Gong1->setIcon(icon3);
-    Gong1->setIconSize(QSize(150, 200));
-    Gong1->setAutoDefault(true);
-    Gong1->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong1);
-
-    Gong2 = new QPushButton(centralWidget);
-    sizePolicy1.setHeightForWidth(Gong2->sizePolicy().hasHeightForWidth());
-    Gong2->setSizePolicy(sizePolicy1);
-    Gong2->setIcon(icon3);
-    Gong2->setIconSize(QSize(150, 200));
-    Gong2->setAutoDefault(true);
-    Gong2->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong2);
-
-    Gong3 = new QPushButton(centralWidget);
-    sizePolicy1.setHeightForWidth(Gong3->sizePolicy().hasHeightForWidth());
-    Gong3->setSizePolicy(sizePolicy1);
-    Gong3->setIcon(icon3);
-    Gong3->setIconSize(QSize(150, 200));
-    Gong3->setAutoDefault(true);
-    Gong3->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong3);
-
-    Gong4 = new QPushButton(centralWidget);
-    sizePolicy1.setHeightForWidth(Gong4->sizePolicy().hasHeightForWidth());
-    Gong4->setSizePolicy(sizePolicy1);
-    Gong4->setIcon(icon3);
-    Gong4->setIconSize(QSize(150, 200));
-    Gong4->setAutoDefault(true);
-    Gong4->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong4);
-
-    Gong5 = new QPushButton(centralWidget);
-    sizePolicy1.setHeightForWidth(Gong5->sizePolicy().hasHeightForWidth());
-    Gong5->setSizePolicy(sizePolicy1);
-    Gong5->setIcon(icon3);
-    Gong5->setIconSize(QSize(150, 200));
-    Gong5->setAutoDefault(true);
-    Gong5->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong5);
-
-    Gong6 = new QPushButton(centralWidget);
-    sizePolicy1.setHeightForWidth(Gong6->sizePolicy().hasHeightForWidth());
-    Gong6->setSizePolicy(sizePolicy1);
-    Gong6->setIcon(icon3);
-    Gong6->setIconSize(QSize(150, 200));
-    Gong6->setAutoDefault(true);
-    Gong6->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong6);
-
-    Gong7 = new QPushButton(centralWidget);
-    sizePolicy1.setHeightForWidth(Gong7->sizePolicy().hasHeightForWidth());
-    Gong7->setSizePolicy(sizePolicy1);
-    Gong7->setIcon(icon3);
-    Gong7->setIconSize(QSize(150, 200));
-    Gong7->setAutoDefault(true);
-    Gong7->setFlat(true);
-
-    horizontalLayout_5->addWidget(Gong7);
-
-
-    verticalLayout_4->addLayout(horizontalLayout_5);
-
-    LTombolT = new QHBoxLayout();
-    LTombolT->setSpacing(6);
-    LTombolT->setContentsMargins(-1, 0, -1, 0);
-
-
-
-    verticalLayout_4->addLayout(LTombolT);
-
-    this->setCentralWidget(centralWidget);
-
-    TOptionPintas->setCurrentIndex(0);
-
-
-    //nama tombol
-
-    TOptionPintas->setTabText(TOptionPintas->indexOf(TEqual), QApplication::translate("MainKakula", "Setting", 0));
-    label->setText(QApplication::translate("MainKakula", "Volume", 0));
-    label_2->setText(QApplication::translate("MainKakula", "Effect", 0));
-    TOptionPintas->setTabText(TOptionPintas->indexOf(TEffect), QApplication::translate("MainKakula", "Effect", 0));
-    toolButton->setText(QString());
-    btnRekam->setText(QApplication::translate("MainKakula", "Rekam", 0));
-    toolButton_2->setText(QApplication::translate("MainKakula", "...", 0));
-    btnPlay->setText(QString());
-    pushButton_2->setText(QApplication::translate("MainKakula", "Quit", 0));
-    pushButton->setText(QApplication::translate("MainKakula", "About Me", 0));
-    Gong1->setText(QString());
-    Gong2->setText(QString());
-    Gong3->setText(QString());
-    Gong4->setText(QString());
-    Gong5->setText(QString());
-    Gong6->setText(QString());
-    Gong7->setText(QString());
-
-    //volume
-
-    suara =50;
-
+    ui->setupUi(this);
+    a=50;
+    b =0;
+
+    fullScreen = false;
+    max=false;
+
+    this->resize(640,400);
+    scene = new QGraphicsScene;
+
+    this->ui->splitter->setCollapsible(1,false);
+    this->ui->splitter_2->setCollapsible(1,false);
+    this->ui->splitter_2->setCollapsible(0, false);
+
+    //toggleFulscreen();
+   this->ui->widget_2->hide();
+    this->ui->btnHmenu->hide();
+    this->ui->textEdit->hide();
+
+    //visualisasi
+    this->ui->wChart->show();
+    this->ui->wBubble->hide();
+    this->ui->wRandom->hide();
+    defaultVisual();
     //signal
-
-    connect(Gong1, SIGNAL(clicked()), this, SLOT(ketukGong1()));
-    connect(Gong2, SIGNAL(clicked()), this, SLOT(ketukGong2()));
-    connect(Gong3, SIGNAL(clicked()), this, SLOT(ketukGong3()));
-    connect(Gong4, SIGNAL(clicked()), this, SLOT(ketukGong4()));
-    connect(Gong5, SIGNAL(clicked()), this, SLOT(ketukGong5()));
-    connect(Gong6, SIGNAL(clicked()), this, SLOT(ketukGong6()));
-    connect(Gong7, SIGNAL(clicked()), this,SLOT(ketukGong7()));
-
-    connect(horizontalSlider, SIGNAL(sliderMoved(int)), this, SLOT(soundVolume(int)));
-
-    connect(toolButton, SIGNAL(clicked()), this, SLOT(pdfReader()));
-
-    //shortcut keyboard
+    connect(this->ui->toolButton_3, SIGNAL(clicked()), this, SLOT(on_btnFullscreen_clicked()));
 }
 
 MainKakula::~MainKakula()
 {
+    delete ui;
+}
+
+void MainKakula::defaultVisual()
+{
+    //meterVU
+    meter = new QVUMeter;
+    this->meter->setValueDim(50);
+    this->meter->setColorValue(Qt::blue);
+    this->meter->setColorBg(Qt::gray);
+    this->meter->setColorHigh(Qt::red);
+    this->meter->setColorLow(Qt::green);
+    this->meter->setMaxValue(100);
+
+    meter2 = new QVUMeter;
+    this->meter2->setValueDim(50);
+    this->meter2->setColorValue(Qt::blue);
+    this->meter2->setColorBg(Qt::gray);
+    this->meter2->setColorHigh(Qt::red);
+    this->meter2->setColorLow(Qt::green);
+    this->meter2->setMaxValue(100);
+
+    meter3 = new QVUMeter;
+    this->meter3->setValueDim(50);
+    this->meter3->setColorValue(Qt::blue);
+    this->meter3->setColorBg(Qt::gray);
+    this->meter3->setColorHigh(Qt::red);
+    this->meter3->setColorLow(Qt::green);
+    this->meter3->setMaxValue(100);
+
+    meter4 = new QVUMeter;
+    this->meter4->setValueDim(50);
+    this->meter4->setColorValue(Qt::blue);
+    this->meter4->setColorBg(Qt::gray);
+    this->meter4->setColorHigh(Qt::red);
+    this->meter4->setColorLow(Qt::green);
+    this->meter4->setMaxValue(100);
+
+    meter5 = new QVUMeter;
+    this->meter5->setValueDim(50);
+    this->meter5->setColorValue(Qt::blue);
+    this->meter5->setColorBg(Qt::gray);
+    this->meter5->setColorHigh(Qt::red);
+    this->meter5->setColorLow(Qt::green);
+    this->meter5->setMaxValue(100);
+
+    meter6 = new QVUMeter;
+    this->meter6->setValueDim(50);
+    this->meter6->setColorValue(Qt::blue);
+    this->meter6->setColorBg(Qt::gray);
+    this->meter6->setColorHigh(Qt::red);
+    this->meter6->setColorLow(Qt::green);
+    this->meter6->setMaxValue(100);
+
+    meter7 = new QVUMeter;
+    this->meter7->setValueDim(50);
+    this->meter7->setColorValue(Qt::blue);
+    this->meter7->setColorBg(Qt::gray);
+    this->meter7->setColorHigh(Qt::red);
+    this->meter7->setColorLow(Qt::green);
+    this->meter7->setMaxValue(100);
+
+    this->ui->wLayoutHchart->addWidget(meter);
+    this->ui->wLayoutHchart->addWidget(meter2);
+    this->ui->wLayoutHchart->addWidget(meter3);
+    this->ui->wLayoutHchart->addWidget(meter4);
+    this->ui->wLayoutHchart->addWidget(meter5);
+    this->ui->wLayoutHchart->addWidget(meter6);
+    this->ui->wLayoutHchart->addWidget(meter7);
 
 }
 
-void MainKakula::ketukGong1()
+void MainKakula::bubleVisual()
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a7.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+
 }
 
-void MainKakula::ketukGong2()
+void MainKakula::randomVisual()
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a6.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+
 }
 
-void MainKakula::ketukGong3()
+void MainKakula::on_horizontalSlider_sliderMoved(int position)
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a5.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+  this->a=position;
 }
 
-void MainKakula::ketukGong4()
+
+void MainKakula::on_btnFullscreen_clicked()
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a4.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+    if (this->fullScreen){
+        this->showNormal();
+        this->fullScreen = false;
+    }
+    else{
+        this->showFullScreen();
+        this->fullScreen = true;
+    }
 }
 
-void MainKakula::ketukGong5()
+void MainKakula::on_btnMaximize_clicked()
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a3.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+    if (this->max){
+        this->showNormal();
+        this->max=false;
+    }
+    else {
+        this->showMaximized();
+        this->max=true;
+    }
 }
 
-void MainKakula::ketukGong6()
+void MainKakula::on_btnMinimize_clicked()
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a2.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+    this->showMinimized();
 }
 
-void MainKakula::ketukGong7()
+
+
+void MainKakula::on_btnHmenu_clicked()
 {
-    SGong = new QMediaPlayer;
-    this->SGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/a1.ogg"));
-    this->SGong->setVolume(suara);
-    this->SGong->play();
+    this->ui->widget_2->hide();
+    this->ui->btnHmenu->hide();
+    this->ui->btnSmenu->show();
 }
 
-void MainKakula::soundVolume(int volume)
+void MainKakula::on_btnSmenu_clicked()
 {
-    this->suara=volume;
+    this->ui->widget_2->show();
+    this->ui->btnSmenu->hide();
+    this->ui->btnHmenu->show();
 }
 
-void MainKakula::pdfReader()
+void MainKakula::resizeEvent(QResizeEvent *event)
+{  
+    int c = this->size().rheight();
+    int d = this->size().rwidth();
+
+    if (d > 1111 && c > 379){
+        this->ui->widget_2->show();
+    }
+    else{
+        this->ui->widget_2->hide();
+    }
+
+}
+
+
+void MainKakula::plotting()
 {
-    QString img = QFileDialog::getOpenFileName(this, tr("Open File"), "/home", "*.png *.jpeg *.jpg");
-    this->lineEdit->setText(img);
-    QPixmap pdf(img);
-    QGraphicsScene *scene = new QGraphicsScene(this->graphicsView);
-    this->graphicsView->setScene(scene);
-    scene->addPixmap(pdf);
+
+}
+
+
+void MainKakula::on_checkBox_2_toggled(bool checked)
+{
+    if (checked == true){
+        this->ui->textEdit->show();
+        this->ui->label_7->hide();
+    }
+    else{
+        this->ui->textEdit->hide();
+        this->ui->label_7->show();
+    }
+}
+
+void MainKakula::on_Gong1_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a1.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
+
+
+
+    for (; this->b <100;){
+       this->b++;
+    }
+    qDebug()<<"NILAI B = "<<b;
+    this->meter->setLeftValue(this->b);
+    this->meter->setRightValue(50);
+
+    this->meter2->setLeftValue(50);
+    this->meter2->setRightValue(0);
+
+}
+
+void MainKakula::on_Gong2_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a2.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
+
+    for (; this->b <100;){
+       this->b++;
+    }
+    this->meter2->setLeftValue(b);
+    this->meter2->setRightValue(50);
+
+    this->meter->setLeftValue(0);
+    this->meter->setRightValue(0);
+}
+
+void MainKakula::on_Gong3_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a3.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
+}
+
+void MainKakula::on_Gong4_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a4.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
+}
+
+void MainKakula::on_Gong5_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a5.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
+}
+
+void MainKakula::on_Gong6_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a6.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
+}
+
+void MainKakula::on_Gong7_clicked()
+{
+    QMediaPlayer *playerGong = new QMediaPlayer;
+    playerGong->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/PENELITIAN_KAKULA/KAKULA/assets/a7.ogg"));
+    playerGong->setVolume(a);
+    playerGong->play();
 }
 
 void MainKakula::keyPressEvent(QKeyEvent *e)
 {
-    /*
-    if (e->key() == Qt::Key_A){
-        ketukGong1();
-    }
-    else if()
-    */
     switch (e->key()) {
     case Qt::Key_L :
-        ketukGong1();
+        this->ui->Gong7->animateClick(100);
         break;
     case Qt::Key_K:
-        ketukGong2();
+        this->ui->Gong6->animateClick(100);
         break;
     case Qt::Key_M:
-        ketukGong3();
+        this->ui->Gong5->animateClick(100);
         break;
     case Qt::Key_C:
-        ketukGong4();
+        this->ui->Gong4->animateClick(100);
         break;
     case Qt::Key_D:
-        ketukGong5();
+        this->ui->Gong3->animateClick(100);
         break;
     case Qt::Key_S:
-        ketukGong6();
+        this->ui->Gong2->animateClick(100);
         break;
     case Qt::Key_A:
-        ketukGong7();
+        this->ui->Gong1->animateClick(100);
         break;
     case Qt::Key_Space:
-        gongSpace();
+        QMessageBox::information(0,"Info Kakula", "Fitur Ini Akan Tesedia\nDirelease Berikutnya");
         break;
     default:
         break;
     }
 }
 
-void MainKakula::gongSpace()
+void MainKakula::on_comboBox_3_activated(int index)
 {
-    QMediaPlayer *SGong2 = new QMediaPlayer;
-    SGong2->setMedia(QUrl::fromLocalFile("/run/media/meong/2187ace6-be97-4e16-aff1-37c2c9802a99/PROJECT/kakula_SRC/KAKULA/assets/gong.ogg"));
-    SGong2->setVolume(this->suara);
-    SGong2->play();
+    if (index == 0){
+        this->ui->wChart->show();
+        this->ui->wRandom->hide();
+        this->ui->wBubble->hide();
+    }
+    else if (index==1) {
+        this->ui->wBubble->show();
+        this->ui->wRandom->hide();
+        this->ui->wChart->hide();
+    }
+    else if (index==2) {
+        this->ui->wRandom->show();
+        this->ui->wChart->hide();
+        this->ui->wBubble->hide();
+    }
+}
+
+void MainKakula::on_checkBox_toggled(bool checked)
+{
+    if (checked==true){
+        this->ui->wRandom->hide();
+        this->ui->wChart->hide();
+        this->ui->wBubble->hide();
+    }
+    else{
+        this->ui->wRandom->hide();
+        this->ui->wChart->show();
+        this->ui->wBubble->hide();
+    }
 }

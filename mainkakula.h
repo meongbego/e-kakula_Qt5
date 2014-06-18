@@ -2,32 +2,19 @@
 #define MAINKAKULA_H
 
 #include <QMainWindow>
-#include <QtCore/QVariant>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QFormLayout>
-#include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTimeEdit>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
+#include <QMessageBox>
 #include <QMultimedia>
-#include <QAudioOutput>
-#include <QAudioDeviceInfo>
 #include <QMediaPlayer>
+#include <QGraphicsView>
+#include <QGraphicsRectItem>
+#include <QGraphicsLineItem>
 #include <QKeyEvent>
-#include <QFileDialog>
-#include <QGraphicsScene>
+#include <meter.h>
+#include <glwidget.h>
+
+namespace Ui {
+class MainKakula;
+}
 
 class MainKakula : public QMainWindow
 {
@@ -37,71 +24,77 @@ public:
     explicit MainKakula(QWidget *parent = 0);
     ~MainKakula();
 
-public slots:
-    void ketukGong1();
-    void ketukGong2();
-    void ketukGong3();
-    void ketukGong4();
-    void ketukGong5();
-    void ketukGong6();
-    void ketukGong7();
-    void soundVolume(int volume);
-
-    void pdfReader();
+    //visualisasi
+    void defaultVisual();
+    void bubleVisual();
+    void randomVisual();
     
+private slots:
+    void on_Gong1_clicked();
+
+    void on_horizontalSlider_sliderMoved(int position);
+
+    void on_btnFullscreen_clicked();
+
+    void on_btnMaximize_clicked();
+
+    void on_btnMinimize_clicked();
+
+    void on_btnHmenu_clicked();
+
+    void on_btnSmenu_clicked();
+
+    void resizeEvent(QResizeEvent *event);
+
+    void on_checkBox_2_toggled(bool checked);
+
+    void on_Gong2_clicked();
+
+    void on_Gong3_clicked();
+
+    void on_Gong4_clicked();
+
+    void on_Gong5_clicked();
+
+    void on_Gong6_clicked();
+
+    void on_Gong7_clicked();
+
+    void on_comboBox_3_activated(int index);
+
+    void on_checkBox_toggled(bool checked);
+
+signals:
+
+
 private:
-        QWidget *centralWidget;
-        QVBoxLayout *verticalLayout_4;
-        QHBoxLayout *horizontalLayout_3;
-        QTabWidget *TOptionPintas;
-        QWidget *TEqual;
-        QHBoxLayout *horizontalLayout_6;
-        QSlider *sa3;
-        QSlider *sa2;
-        QSlider *sa1;
-        QSlider *sa4;
-        QSlider *sa5;
-        QSlider *sa6;
-        QSlider *sa7;
-        QWidget *TEffect;
-        QHBoxLayout *horizontalLayout_2;
-        QFormLayout *formEffect;
-        QLabel *label;
-        QSlider *horizontalSlider;
-        QLabel *label_2;
-        QSlider *horizontalSlider_2;
-        QVBoxLayout *verticalLayout_3;
-        QGraphicsView *graphicsView;
-        QHBoxLayout *horizontalLayout_4;
-        QLineEdit *lineEdit;
-        QToolButton *toolButton;
-        QVBoxLayout *verticalLayout_2;
-        QPushButton *btnRekam;
-        QHBoxLayout *horizontalLayout;
-        QComboBox *comboExample;
-        QToolButton *toolButton_2;
-        QTimeEdit *exampleTime;
-        QPushButton *btnPlay;
-        QPushButton *pushButton_2;
-        QPushButton *pushButton;
-        QHBoxLayout *horizontalLayout_5;
-        QPushButton *Gong1;
-        QPushButton *Gong2;
-        QPushButton *Gong3;
-        QPushButton *Gong4;
-        QPushButton *Gong5;
-        QPushButton *Gong6;
-        QPushButton *Gong7;
-        QHBoxLayout *LTombolT;
+    Ui::MainKakula *ui;
 
+    int a;
+    int b;
 
-        QMediaPlayer *SGong;
+    bool fullScreen;
 
-        int suara;
+    bool max;
 
-        void keyPressEvent(QKeyEvent *e);
+    QGraphicsRectItem *rectangle;
+    QGraphicsLineItem *line;
+    QGraphicsScene *scene;
 
-        void gongSpace();
+    //visualisasi
+    QVUMeter *meter;
+    QVUMeter *meter2;
+    QVUMeter *meter3;
+    QVUMeter *meter4;
+    QVUMeter *meter5;
+    QVUMeter *meter6;
+    QVUMeter *meter7;
+
+    GLWidget *bubleWidget;
+
+    //testing
+    void keyPressEvent(QKeyEvent *e);
+    void plotting();
 };
 
 #endif // MAINKAKULA_H

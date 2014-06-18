@@ -1,10 +1,17 @@
 <RCC>
     <qresource prefix="/icon">
-        <file>icon/gong1.png</file>
-        <file>icon/gong2.png</file>
+        <file>icon/maximize-icon.png</file>
         <file>icon/open.png</file>
-        <file>icon/Stop-Normal-Red-icon.png</file>
-        <file>icon/video-play-512.png</file>
-        <file>icon/exit.png</file>
+        <file>icon/r.png</file>
+        <file>icon/16-sound.png</file>
+        <file>icon/kakula_gong.png</file>
+        <file>icon/facebook-icon.png</file>
+        <file>icon/google-plus-icon.png</file>
+        <file>icon/Icon-Twitter.png</file>
+        <file>icon/paragraph_justify.png</file>
+        <file>icon/setting.png</file>
+        <file>icon/about-icon.png</file>
+        <file>icon/playbtn.png</file>
+        <file>icon/Stop.png</file>
     </qresource>
 </RCC>

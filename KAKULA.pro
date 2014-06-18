@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui multimedia
+QT       += core gui multimedia opengl
+VPATH += ../shared
+INCLUDEPATH += ../shared
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,11 +15,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainkakula.cpp
+        mainkakula.cpp \
+    meter.cpp \
+    bubble.cpp \
+    glwidget.cpp
 
-HEADERS  += mainkakula.h
+HEADERS  += mainkakula.h \
+    meter.h \
+    bubble.h \
+    glwidget.h
 
-FORMS    +=
+FORMS    += mainkakula.ui
 
 RESOURCES += \
     rsc.qrc
+
+OTHER_FILES +=
