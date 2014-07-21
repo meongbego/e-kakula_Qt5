@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/about-icon.png</file>
+        <file>icon/facebook-icon.png</file>
+        <file>icon/google-plus-icon.png</file>
+        <file>icon/icon-sounds.png</file>
+        <file>icon/Icon-Twitter.png</file>
+        <file>icon/kakula_gong.png</file>
+        <file>icon/paragraph_justify.png</file>
+        <file>icon/playbtn.png</file>
+        <file>icon/r.png</file>
+        <file>icon/setting.png</file>
+        <file>icon/video-play-512.png</file>
+        <file>icon/Stop.png</file>
+    </qresource>
+</RCC>
